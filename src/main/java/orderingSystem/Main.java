@@ -7,10 +7,8 @@ import main.java.orderingSystem.people.Customer;
 import main.java.orderingSystem.product.Product;
 import main.java.orderingSystem.payment.Cash;
 
-import java.net.PasswordAuthentication;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -25,9 +23,7 @@ public class Main {
         order.finaliseOrder();
         // Terminal input for type of payment
         Payment payment = new Payment();
-        payment.makePayment(order.calculatePrice(), "Card");
-
-
+        payment.makePayment(order.calculatePrice());
         order.makeReceipt();
     }
 }

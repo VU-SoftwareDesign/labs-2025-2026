@@ -1,8 +1,6 @@
 package main.java.orderingSystem.payment;
 
 import java.time.LocalDate;
-import java.util.Optional;
-import java.util.UUID;
 
 public class Card extends Payment {
  
@@ -18,7 +16,7 @@ public class Card extends Payment {
     }
 
     @Override
-    public float makePayment(float amount) {
-        return amount;
+    public void makePayment(float amount) {
+        System.out.println("Card payment made!");
     }
 }

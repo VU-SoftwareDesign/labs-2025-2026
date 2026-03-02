@@ -1,13 +1,20 @@
 package main.java.orderingSystem.payment;
 
-import java.util.Objects;
-
-public class Cash {
+public class Cash extends Payment {
     private float amountGiven;
 
-    public float makePayment(float amount, String type) {
-         if (Objects.equals(type, "Cash")) {
-             return amountGiven - amount;
-         } else return 0;
+    public Cash(Integer amountGiven) {
+        this.amountGiven = amountGiven;
+    }
+
+    @Override
+    public void makePayment(float amount) {
+        // return change
+        float change = amountGiven - amount;
+        if (change < 0) {
+            System.out.println("Not enough money! Missing: " + change);
+            return;
+        }
+        System.out.println("Order paid! Here's your change: " + change);
     }
 }
