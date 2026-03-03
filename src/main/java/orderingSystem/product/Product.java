@@ -40,4 +40,9 @@ public class Product {
     }
 
     public float getPrice() { return this.price; }
+
+    @Override
+    public String toString() {
+        return this.productName + " (cost: " + this.price + ")";
+    }
 }

@@ -14,16 +14,17 @@ public class Main {
     public static void main(String[] args) {
         Order order = new Order();
         List<Product> products = new ArrayList<>();
+        products.add(new Product("Chair", 20, 20));
+        products.add(new Product("Table", 50, 6));
         order.addToOrder(products);
 
         Customer customer = new Customer();
         customer.addDetails("John", "Main Street 1");
         order.setCustomer(customer);
 
-        order.finaliseOrder();
-        // Terminal input for type of payment
-        Payment payment = new Payment();
-        payment.makePayment(order.calculatePrice());
-        order.makeReceipt();
+        Payment payment = new Cash(100);
+        order.setPayment(payment);
+        boolean orderCompleted = order.finaliseOrder();
+        if (orderCompleted) order.makeReceipt();
     }
 }

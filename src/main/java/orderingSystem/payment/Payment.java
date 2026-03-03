@@ -8,7 +8,9 @@ public class Payment {
     private UUID paymentID;
     private float totalAmount;
 
-    public void makePayment(float amount) {}
+    public boolean makePayment(float amount) {
+        return true;
+    }
     public Payment getPayment() {
         return this;
     }

@@ -7,7 +7,9 @@ import main.java.orderingSystem.product.Product;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 import java.util.UUID;
+
 
 public class Order {
 
@@ -30,6 +32,7 @@ public class Order {
         this.orderID = UUID.randomUUID();
         this.status = Status.CREATED;
         this.createdDate = LocalDate.now();
+        this.products = new ArrayList<>();
     }
 
     public void setCustomer(Customer customer) {
@@ -37,7 +40,11 @@ public class Order {
     }
 
     public void makeReceipt() {
-        System.out.println("This is the receipt for order");
+        System.out.println("This is the receipt for order:");
+        for (Product p : this.products) {
+            System.out.println("\t " + p);
+        }
+        System.out.println("Total: " + calculatePrice());
     }
 
     public void addToOrder(List<Product> products) {
@@ -69,13 +76,18 @@ public class Order {
         this.status = status;
     }
 
+    public void setPayment(Payment payment) {
+        this.payment = payment;
+    }
+
     public boolean finaliseOrder() {
-        // UI input for cash or card and amount
-        float amount = 0; // would be the input
-        updateStatus(Status.OTW);
-        dispatchedDate = LocalDate.now();
-        payment.makePayment(amount);
-        return true;
+        float amount = this.calculatePrice();
+        boolean paid = payment.makePayment(amount);
+        if (paid) {
+            updateStatus(Status.OTW);
+            dispatchedDate = LocalDate.now();
+        }
+        return paid;
     }
 
     public void markedDelivered() {

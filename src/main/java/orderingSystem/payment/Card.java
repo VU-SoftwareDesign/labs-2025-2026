@@ -16,7 +16,8 @@ public class Card extends Payment {
     }
 
     @Override
-    public void makePayment(float amount) {
+    public boolean makePayment(float amount) {
         System.out.println("Card payment made!");
+        return true;
     }
 }

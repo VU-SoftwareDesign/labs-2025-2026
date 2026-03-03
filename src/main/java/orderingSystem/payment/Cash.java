@@ -8,13 +8,14 @@ public class Cash extends Payment {
     }
 
     @Override
-    public void makePayment(float amount) {
+    public boolean makePayment(float amount) {
         // return change
         float change = amountGiven - amount;
         if (change < 0) {
             System.out.println("Not enough money! Missing: " + change);
-            return;
+            return false;
         }
         System.out.println("Order paid! Here's your change: " + change);
+        return true;
     }
 }
