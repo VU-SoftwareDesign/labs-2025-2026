@@ -2,7 +2,7 @@
 Example JavaFX application showing off the Observer design pattern. Made for the Software Design course at VU Amsterdam.
 
 ## Setup
-
+0. Make sure you have JDK25 installed (should be done already :).
 1. Clone this branch of the repository into IntelliJ IDEA.
     * You should see a branch named at the top.
     * Go to that dropdown menu, open the menu for "Remote" branches, and find `javafx-observer`.
